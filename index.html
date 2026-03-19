@@ -20,9 +20,14 @@
     }
 
     h1 {
-      color: #ffcccb; /* soft pink */
+      color: #ffcccb;
       font-size: 2.5rem;
       margin-bottom: 20px;
+    }
+
+    h3 {
+      color: #ffcccb;
+      margin-top: 30px;
     }
 
     p {
@@ -30,15 +35,6 @@
       line-height: 1.6;
       max-width: 700px;
       margin-bottom: 20px;
-    }
-
-    .profile-pic {
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 20px;
-      border: 4px solid #ffcccb;
     }
 
     .quiz {
@@ -69,15 +65,19 @@
       width: 100%;
     }
 
-    .quiz button {
+    .quiz button, .love-buttons button {
       margin-top: 10px;
       padding: 8px 16px;
       border: none;
-      border-radius: 5px;
+      border-radius: 8px;
       background-color: #ffcccb;
       color: #001f3f;
       font-weight: bold;
       cursor: pointer;
+    }
+
+    .love-buttons {
+      margin-top: 10px;
     }
 
     .result {
@@ -96,11 +96,22 @@
       left: 0;
       z-index: 9999;
     }
+
+    /* Floating hearts */
+    .heart {
+      position: fixed;
+      animation: floatUp 5s linear forwards;
+      pointer-events: none;
+      z-index: 10000;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(-100vh); opacity: 0; }
+    }
   </style>
 </head>
 <body>
-
-  <img src="your-picture.jpg" alt="Us" class="profile-pic">
 
   <h1>Happy 1st Monthsary, Baby!</h1>
 
@@ -122,47 +133,7 @@
   <p>
     I love you so much, baby ko!
   </p>
- </p>
 
-  <br>
-
-  <h3>Do you love me????? </h3>
-  <button onclick="yesLove()">YES </button>
-  <button onclick="moveNo(this)">NO </button>
-
-</div>
-
-<script>
-  function openLetter() {
-    document.getElementById("letter").style.display = "block";
-  }
-
-  function yesLove() {
-    alert("I knew it!! I love you more baby 💙💙💙");
-  }
-
-  function moveNo(btn) {
-    btn.style.position = "absolute";
-    btn.style.top = Math.random() * window.innerHeight + "px";
-    btn.style.left = Math.random() * window.innerWidth + "px";
-  }
-
-  // Floating hearts generator
-  setInterval(() => {
-    const heart = document.createElement("div");
-    heart.classList.add("heart");
-    heart.innerHTML = "💙";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = Math.random() * 20 + 10 + "px";
-
-    document.body.appendChild(heart);
-
-    setTimeout(() => {
-      heart.remove();
-    }, 5000);
-  }, 300);
-</script>
-    
   <div class="quiz">
     <h2>Quick Quiz for You 💖</h2>
 
@@ -185,9 +156,16 @@
     <div class="result" id="result"></div>
   </div>
 
+  <h3>Do you love me???? </h3>
+  <div class="love-buttons">
+    <button onclick="yesLove()">YES </button>
+    <button onclick="moveNo(this)">NO </button>
+  </div>
+
   <canvas class="confetti" id="confetti"></canvas>
 
   <script>
+    // Quiz logic
     const confettiCanvas = document.getElementById('confetti');
     const ctx = confettiCanvas.getContext('2d');
     confettiCanvas.width = window.innerWidth;
@@ -252,11 +230,11 @@
 
     function checkAnswers() {
       const answers = {
-        q1: 'instagram',
-        q2: 'pink',
-        q3: 'december 22, 2025',
-        q4: 'february 23, 2025',
-        q5: 'marjarette''sev''mj'
+        q1: 'instagram''ig'
+        q2: 'pink'
+        q3: 'december 22, 2025' 'dec 22' 'dec 22, 2025'
+        q4: 'february 23, 2025', ' feb 23' 'feb 23, 2025'
+        q5: 'marjarette''mj''sev''sevigilim''marjarette garbo dris'
       };
 
       let score = 0;
@@ -267,16 +245,40 @@
 
       const resultDiv = document.getElementById('result');
       if (score === 5) {
-        resultDiv.innerHTML = "Perfect ka baby ko! I LOVE YOU SO MUCH";
+        resultDiv.innerHTML = "Perfect ang baby ko! I LOVE YOU SO MUCH";
         startConfetti();
       } else if (score >= 3) {
-        resultDiv.innerHTML = `okay lang! you got ${score} out of 5, i love you`;
+        resultDiv.innerHTML = `Good job pa rin! You got ${score} out of 5`;
       } else {
-        resultDiv.innerHTML = `You got ${score} out of 5. Don't worry, baby, you'll get it next time, PERO BAKIT MALI KA GRABE`;
+        resultDiv.innerHTML = `You got ${score} out of 5. Don't worry, baby, you'll get it next time. pero bakit ang baba ha???`;
       }
-</div>
+    }
 
-</script>
+    // Love buttons logic
+    function yesLove() {
+      alert("I knew it!! I love you more baby 💙💙💙");
+    }
 
+    function moveNo(btn) {
+      btn.style.position = "absolute";
+      btn.style.top = Math.random() * (window.innerHeight - 50) + "px";
+      btn.style.left = Math.random() * (window.innerWidth - 100) + "px";
+    }
+
+    // Floating hearts generator
+    setInterval(() => {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerHTML = "💙";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = Math.random() * 20 + 10 + "px";
+
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 5000);
+    }, 300);
+  </script>
 </body>
 </html>
