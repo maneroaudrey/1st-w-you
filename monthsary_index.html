@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>For You 💙</title>
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #0a1a2f, #1f4068, #3a7bd5);
+  color: white;
+  text-align: center;
+  overflow: hidden;
+}
+h1 {
+  margin-top: 80px;
+  color: #66b2ff;
+}
+button {
+  padding: 12px 20px;
+  margin: 10px;
+  border: none;
+  border-radius: 25px;
+  background: #3a7bd5;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+.letter {
+  display: none;
+  margin: 20px auto;
+  max-width: 600px;
+  background: rgba(255,255,255,0.1);
+  padding: 25px;
+  border-radius: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Hi Baby 💙</h1>
+<button onclick="openLetter()">Open My Letter 💌</button>
+
+<div class="letter" id="letter">
+<h2>Happy Monthsary 💙</h2>
+<p>
+1st month with you, but it feels like forever...
+<br><br>
+I love you so much, baby ko!
+</p>
+</div>
+
+<script>
+function openLetter() {
+  document.getElementById("letter").style.display = "block";
+}
+</script>
+
+</body>
+</html>
