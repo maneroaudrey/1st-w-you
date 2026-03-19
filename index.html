@@ -1,142 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>1st Monthsary Gift</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Arial', sans-serif;
-      background-color: #001f3f; /* navy blue */
-      color: #ffffff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      padding: 20px;
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1st Monthsary Gift</title>
+<style>
+  body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #001f3f;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    text-align: center;
+    overflow: hidden;
+  }
 
-    h1 {
-      color: #ffcccb;
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-    }
+  /* Envelope styling */
+  .envelope {
+    width: 250px;
+    height: 150px;
+    background-color: #ffcccb;
+    position: relative;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    overflow: hidden;
+  }
+  .flap {
+    width: 0;
+    height: 0;
+    border-left: 125px solid transparent;
+    border-right: 125px solid transparent;
+    border-bottom: 75px solid #ff6666;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: 0.5s;
+  }
+  .envelope.open .flap {
+    transform: rotateX(180deg);
+  }
 
-    h3 {
-      color: #ffcccb;
-      margin-top: 30px;
-    }
+  .letter {
+    display: none;
+    max-width: 700px;
+    margin-top: 20px;
+  }
 
-    p {
-      font-size: 1.1rem;
-      line-height: 1.6;
-      max-width: 700px;
-      margin-bottom: 20px;
-    }
+  h1 {
+    color: #ffcccb;
+  }
 
-    .quiz {
-      margin-top: 30px;
-      text-align: left;
-      max-width: 700px;
-      background: rgba(255,255,255,0.1);
-      padding: 20px;
-      border-radius: 12px;
-    }
+  p {
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
 
-    .quiz h2 {
-      color: #ffcccb;
-      margin-bottom: 10px;
-    }
+  .quiz {
+    margin-top: 20px;
+    text-align: left;
+    background: rgba(255,255,255,0.1);
+    padding: 15px;
+    border-radius: 12px;
+  }
 
-    .quiz label {
-      margin-top: 10px;
-      display: block;
-      font-weight: bold;
-    }
+  .quiz input[type="text"] {
+    width: 100%;
+    margin: 5px 0 10px;
+    padding: 7px;
+    border-radius: 5px;
+    border: none;
+  }
 
-    .quiz input[type="text"] {
-      padding: 8px;
-      border-radius: 5px;
-      border: none;
-      margin-top: 5px;
-      width: 100%;
-    }
+  button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 8px;
+    background-color: #ffcccb;
+    color: #001f3f;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 5px;
+  }
 
-    .quiz button, .love-buttons button {
-      margin-top: 10px;
-      padding: 8px 16px;
-      border: none;
-      border-radius: 8px;
-      background-color: #ffcccb;
-      color: #001f3f;
-      font-weight: bold;
-      cursor: pointer;
-    }
+  .love-buttons button {
+    margin: 10px;
+  }
 
-    .love-buttons {
-      margin-top: 10px;
-    }
+  /* Confetti */
+  .confetti {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+  }
 
-    .result {
-      margin-top: 10px;
-      font-weight: bold;
-      font-size: 1.1rem;
-    }
+  .heart {
+    position: fixed;
+    animation: floatUp 5s linear forwards;
+    pointer-events: none;
+    z-index: 10000;
+  }
 
-    /* Confetti */
-    .confetti {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      top: 0;
-      left: 0;
-      z-index: 9999;
-    }
-
-    /* Floating hearts */
-    .heart {
-      position: fixed;
-      animation: floatUp 5s linear forwards;
-      pointer-events: none;
-      z-index: 10000;
-    }
-
-    @keyframes floatUp {
-      0% { transform: translateY(0); opacity: 1; }
-      100% { transform: translateY(-100vh); opacity: 0; }
-    }
-  </style>
+  @keyframes floatUp {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-100vh); opacity: 0; }
+  }
+</style>
 </head>
 <body>
 
+<div class="envelope" id="envelope" onclick="openLetter()">
+  <div class="flap"></div>
+</div>
+
+<div class="letter" id="letter">
   <h1>Happy 1st Monthsary, Baby!</h1>
 
-  <p>
-    1st month with you, but it feels like forever. I've known you since 2024, yet you’ve never changed. Thank you for giving me the chance to prove my love for you, and for loving me unconditionally.
-  </p>
-  <p>
-    I'm so happy with everything happening to us—from introducing you to my family and friends, to finally being your girlfriend.
-  </p>
-  <p>
-    I love everything about you—your smile, your scent, your body ;), your mindset. I love you for being you, baby.
-  </p>
-  <p>
-    I promise I’ll wait until we see each other again and until we finally live together. I’ll make bawi when we meet again, but for now, this website muna is my gift for you hehe.
-  </p>
-  <p>
-    I miss you so much. Sana talaga ikasal na tayo. I'm always here for you kahit 3,000 miles away ka.
-  </p>
-  <p>
-    I love you so much, baby ko!
-  </p>
+  <p>1st month with you, but it feels like forever. I've known you since 2024, yet you’ve never changed. Thank you for giving me the chance to prove my love for you, and for loving me unconditionally.</p>
+  <p>I'm so happy with everything happening to us—from introducing you to my family and friends, to finally being your girlfriend.</p>
+  <p>I love everything about you—your smile, your scent, your body ;), your mindset. I love you for being you, baby.</p>
+  <p>I promise I’ll wait until we see each other again and until we finally live together. I’ll make bawi when we meet again, but for now, this website muna is my gift for you hehe.</p>
+  <p>I miss you so much. Sana talaga ikasal na tayo. I'm always here for you kahit 3,000 miles away ka.</p>
+  <p>I love you so much, baby ko!</p>
 
   <div class="quiz">
     <h2>Quick Quiz for You 💖</h2>
-
     <label>Where did we first talk?</label>
     <input type="text" id="q1" placeholder="Your answer...">
     
@@ -156,131 +152,137 @@
     <div class="result" id="result"></div>
   </div>
 
-  <h3>Do you love me???? </h3>
+  <h3>Do you love me? 😳</h3>
   <div class="love-buttons">
-    <button onclick="yesLove()">YES </button>
-    <button onclick="moveNo(this)">NO </button>
+    <button onclick="yesLove()">YES 💙</button>
+    <button onclick="moveNo(this)">NO 😝</button>
   </div>
+</div>
 
-  <canvas class="confetti" id="confetti"></canvas>
+<canvas class="confetti" id="confetti"></canvas>
 
-  <script>
-    // Quiz logic
-    const confettiCanvas = document.getElementById('confetti');
-    const ctx = confettiCanvas.getContext('2d');
-    confettiCanvas.width = window.innerWidth;
-    confettiCanvas.height = window.innerHeight;
+<script>
+  // Envelope open
+  function openLetter() {
+    document.getElementById('envelope').classList.add('open');
+    setTimeout(() => {
+      document.getElementById('letter').style.display = 'block';
+      document.getElementById('envelope').style.display = 'none';
+    }, 500);
+  }
 
-    let confettiPieces = [];
+  // Quiz logic
+  const confettiCanvas = document.getElementById('confetti');
+  const ctx = confettiCanvas.getContext('2d');
+  confettiCanvas.width = window.innerWidth;
+  confettiCanvas.height = window.innerHeight;
 
-    function createConfetti() {
-      for (let i = 0; i < 150; i++) {
-        confettiPieces.push({
+  let confettiPieces = [];
+
+  function createConfetti() {
+    for (let i = 0; i < 150; i++) {
+      confettiPieces.push({
+        x: Math.random() * confettiCanvas.width,
+        y: Math.random() * confettiCanvas.height - confettiCanvas.height,
+        r: Math.random() * 6 + 4,
+        d: Math.random() * 20 + 10,
+        color: `hsl(${Math.random() * 360}, 100%, 50%)`,
+        tilt: Math.floor(Math.random() * 10) - 10,
+        tiltAngleIncremental: Math.random() * 0.07 + 0.05,
+        tiltAngle: 0
+      });
+    }
+  }
+
+  function drawConfetti() {
+    ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+    confettiPieces.forEach((p) => {
+      ctx.beginPath();
+      ctx.lineWidth = p.r / 2;
+      ctx.strokeStyle = p.color;
+      ctx.moveTo(p.x + p.tilt + p.r / 4, p.y);
+      ctx.lineTo(p.x + p.tilt, p.y + p.tilt + p.r / 4);
+      ctx.stroke();
+    });
+    updateConfetti();
+  }
+
+  function updateConfetti() {
+    confettiPieces.forEach((p, index) => {
+      p.tiltAngle += p.tiltAngleIncremental;
+      p.y += (Math.cos(p.d) + 3 + p.r / 2) / 2;
+      p.tilt = Math.sin(p.tiltAngle) * 15;
+
+      if (p.y > confettiCanvas.height) {
+        confettiPieces[index] = {
           x: Math.random() * confettiCanvas.width,
-          y: Math.random() * confettiCanvas.height - confettiCanvas.height,
-          r: Math.random() * 6 + 4,
-          d: Math.random() * 20 + 10,
-          color: `hsl(${Math.random() * 360}, 100%, 50%)`,
-          tilt: Math.floor(Math.random() * 10) - 10,
-          tiltAngleIncremental: Math.random() * 0.07 + 0.05,
-          tiltAngle: 0
-        });
+          y: -10,
+          r: p.r,
+          d: p.d,
+          color: p.color,
+          tilt: p.tilt,
+          tiltAngleIncremental: p.tiltAngleIncremental,
+          tiltAngle: p.tiltAngle
+        };
       }
+    });
+  }
+
+  function startConfetti() {
+    createConfetti();
+    setInterval(drawConfetti, 20);
+    setTimeout(() => confettiPieces = [], 5000);
+  }
+
+ <script>
+  function checkAnswers() {
+    const answers = {
+      q1: ['instagram', 'ig'],
+      q2: ['pink'],
+      q3: ['december 22, 2025', 'dec 22, 2025', 'dec 22'],
+      q4: ['february 23, 2025', 'feb 23', 'feb 23, 2025'],
+      q5: ['marjarette', 'marjarette garbo dris', 'mj', 'sev']
+    };
+
+    let score = 0;
+    for (let i = 1; i <= 5; i++) {
+      let userAnswer = document.getElementById('q'+i).value.toLowerCase().trim();
+      if (userAnswer === answers['q'+i]) score++;
     }
 
-    function drawConfetti() {
-      ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
-      confettiPieces.forEach((p) => {
-        ctx.beginPath();
-        ctx.lineWidth = p.r / 2;
-        ctx.strokeStyle = p.color;
-        ctx.moveTo(p.x + p.tilt + p.r / 4, p.y);
-        ctx.lineTo(p.x + p.tilt, p.y + p.tilt + p.r / 4);
-        ctx.stroke();
-      });
-      updateConfetti();
+    const resultDiv = document.getElementById('result');
+    if (score === 5) {
+      resultDiv.innerHTML = "Perfect so galing ng baby ko! I LOVE YOU SO MUCH;
+      startConfetti();
+    } else if (score >= 3) {
+      resultDiv.innerHTML = `Good job ha! You got ${score} out of 5 sev`;
+    } else {
+      resultDiv.innerHTML = `You got ${score} out of 5. Don't worry, baby, you'll get it next time... PERO BAT ANG BABA HA`;
     }
+  }
 
-    function updateConfetti() {
-      confettiPieces.forEach((p, index) => {
-        p.tiltAngle += p.tiltAngleIncremental;
-        p.y += (Math.cos(p.d) + 3 + p.r / 2) / 2;
-        p.tilt = Math.sin(p.tiltAngle) * 15;
+  // Love buttons
+  function yesLove() {
+    alert("I knew it HEHE!! I love you more baby KO 💙💙💙");
+  }
 
-        if (p.y > confettiCanvas.height) {
-          confettiPieces[index] = {
-            x: Math.random() * confettiCanvas.width,
-            y: -10,
-            r: p.r,
-            d: p.d,
-            color: p.color,
-            tilt: p.tilt,
-            tiltAngleIncremental: p.tiltAngleIncremental,
-            tiltAngle: p.tiltAngle
-          };
-        }
-      });
-    }
+  function moveNo(btn) {
+    btn.style.position = "absolute";
+    btn.style.top = Math.random() * (window.innerHeight - 50) + "px";
+    btn.style.left = Math.random() * (window.innerWidth - 100) + "px";
+  }
 
-    function startConfetti() {
-      createConfetti();
-      setInterval(drawConfetti, 20);
-      setTimeout(() => confettiPieces = [], 5000); // stop after 5s
-    }
+  // Floating hearts
+  setInterval(() => {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "💙";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 20 + 10 + "px";
+    document.body.appendChild(heart);
+    setTimeout(() => { heart.remove(); }, 5000);
+  }, 300);
 
-    function checkAnswers() {
-      const answers = {
-        q1: 'instagram''ig'
-        q2: 'pink'
-        q3: 'december 22, 2025' 'dec 22' 'dec 22, 2025'
-        q4: 'february 23, 2025', ' feb 23' 'feb 23, 2025'
-        q5: 'marjarette''mj''sev''sevigilim''marjarette garbo dris'
-      };
-
-      let score = 0;
-      for (let i = 1; i <= 5; i++) {
-        let userAnswer = document.getElementById('q'+i).value.toLowerCase().trim();
-        if (userAnswer === answers['q'+i]) score++;
-      }
-
-      const resultDiv = document.getElementById('result');
-      if (score === 5) {
-        resultDiv.innerHTML = "Perfect ang baby ko! I LOVE YOU SO MUCH";
-        startConfetti();
-      } else if (score >= 3) {
-        resultDiv.innerHTML = `Good job pa rin! You got ${score} out of 5`;
-      } else {
-        resultDiv.innerHTML = `You got ${score} out of 5. Don't worry, baby, you'll get it next time. pero bakit ang baba ha???`;
-      }
-    }
-
-    // Love buttons logic
-    function yesLove() {
-      alert("I knew it!! I love you more baby 💙💙💙");
-    }
-
-    function moveNo(btn) {
-      btn.style.position = "absolute";
-      btn.style.top = Math.random() * (window.innerHeight - 50) + "px";
-      btn.style.left = Math.random() * (window.innerWidth - 100) + "px";
-    }
-
-    // Floating hearts generator
-    setInterval(() => {
-      const heart = document.createElement("div");
-      heart.classList.add("heart");
-      heart.innerHTML = "💙";
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.fontSize = Math.random() * 20 + 10 + "px";
-
-      document.body.appendChild(heart);
-
-      setTimeout(() => {
-        heart.remove();
-      }, 5000);
-    }, 300);
-    
-  </script>
-  
+</script>
 </body>
 </html>
