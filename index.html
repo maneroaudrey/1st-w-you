@@ -100,7 +100,6 @@
 </head>
 <body>
 
-  < !--https://chatgpt.com/backend-api/estuary/content?id=file_00000000441c7208b9a7b91ab3aca681&ts=492756&p=fs&cid=1&sig=73f26dc1b1b27deb2b6b6bf84fdebe9e9b442c9f7c363f25adbbcb7a065ee970&v=0-->
   <img src="your-picture.jpg" alt="Us" class="profile-pic">
 
   <h1>Happy 1st Monthsary, Baby!</h1>
@@ -123,7 +122,47 @@
   <p>
     I love you so much, baby ko!
   </p>
+ </p>
 
+  <br>
+
+  <h3>Do you love me????? </h3>
+  <button onclick="yesLove()">YES </button>
+  <button onclick="moveNo(this)">NO </button>
+
+</div>
+
+<script>
+  function openLetter() {
+    document.getElementById("letter").style.display = "block";
+  }
+
+  function yesLove() {
+    alert("I knew it!! I love you more baby 💙💙💙");
+  }
+
+  function moveNo(btn) {
+    btn.style.position = "absolute";
+    btn.style.top = Math.random() * window.innerHeight + "px";
+    btn.style.left = Math.random() * window.innerWidth + "px";
+  }
+
+  // Floating hearts generator
+  setInterval(() => {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "💙";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 20 + 10 + "px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+      heart.remove();
+    }, 5000);
+  }, 300);
+</script>
+    
   <div class="quiz">
     <h2>Quick Quiz for You 💖</h2>
 
@@ -217,7 +256,7 @@
         q2: 'pink',
         q3: 'december 22, 2025',
         q4: 'february 23, 2025',
-        q5: 'marjarette'
+        q5: 'marjarette''sev''mj'
       };
 
       let score = 0;
@@ -235,41 +274,8 @@
       } else {
         resultDiv.innerHTML = `You got ${score} out of 5. Don't worry, baby, you'll get it next time, PERO BAKIT MALI KA GRABE`;
       }
-    }
-    <h3>Do you love me?????? </h3>
-  <button onclick="yesLove()">YES </button>
-  <button onclick="moveNo(this)">NO </button>
 </div>
 
-<script>
-  function openLetter() {
-    document.getElementById("letter").style.display = "block";
-  }
-
-  function yesLove() {
-    alert("I knew it!! I love you more baby 💙💙💙");
-  }
-
-  function moveNo(btn) {
-    btn.style.position = "absolute";
-    btn.style.top = Math.random() * window.innerHeight + "px";
-    btn.style.left = Math.random() * window.innerWidth + "px";
-  }
-
-  // Floating hearts
-  setInterval(() => {
-    const heart = document.createElement("div");
-    heart.classList.add("heart");
-    heart.innerHTML = "💙";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = Math.random() * 20 + 10 + "px";
-
-    document.body.appendChild(heart);
-
-    setTimeout(() => {
-      heart.remove();
-    }, 5000);
-  }, 300);
 </script>
 
 </body>
